@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>temvia | Gestão inteligente para transporte fretado</title>
+<meta name="description" content="Gestão, roteirização inteligente, motorista, passageiro e empresa cliente em uma única plataforma para transporte fretado.">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://temvia.com.br/">
+
+<!-- Open Graph / WhatsApp / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="temvia">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://temvia.com.br/">
+<meta property="og:title" content="temvia | Gestão inteligente para transporte fretado">
+<meta property="og:description" content="Gestão, roteirização inteligente, motorista, passageiro e empresa cliente em uma única plataforma. Feita dentro da operação.">
+<meta property="og:image" content="https://temvia.com.br/assets/og-temvia.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="temvia — gestão inteligente para transporte fretado">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="temvia | Gestão inteligente para transporte fretado">
+<meta name="twitter:description" content="Gestão, roteirização, motorista, passageiro e empresa cliente em uma única plataforma.">
+<meta name="twitter:image" content="https://temvia.com.br/assets/og-temvia.png">
+
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon.png" type="image/png" sizes="64x64">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+
+<link rel="preload" as="image" href="assets/logo-temvia-dark.png">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-700-normal.woff2" crossorigin>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"temvia",
+"applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"description":"Plataforma de gestão para transporte fretado: gestão, roteirização inteligente, aplicativo do motorista, aplicativo do passageiro e portal da empresa cliente.",
+"url":"https://temvia.com.br/","inLanguage":"pt-BR",
+"offers":{"@type":"Offer","availability":"https://schema.org/InStock"}}
+</script>
+
+<style>
+/* ============================================================
+   Inter auto-hospedada (subconjunto latin) — sem chamada externa
+   ============================================================ */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/inter-latin-400-normal.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;
+  src:url('assets/fonts/inter-latin-500-normal.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;
+  src:url('assets/fonts/inter-latin-600-normal.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;
+  src:url('assets/fonts/inter-latin-700-normal.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* ============================================================
+   temvia — tokens (mesma paleta do sistema)
+   ============================================================ */
+:root{
+  --bg:#0B0E13; --sf1:#12161D; --sf2:#181D26; --sf3:#1F2530;
+  --line:#242B37; --line2:#2E3644;
+  --tx:#E9EDF3; --tx2:#A3ADBB; --tx3:#6F7A8A;
+  --amber:#FBAE17; --amber-d:#E09A08;
+  --ok:#3FBF8F; --warn:#E0A94A; --err:#EF6A6A; --info:#5C9DFF;
+
+  --lightbg:#E9EDF3; --lighttx:#0B0E13; --lighttx2:#4A5563; --lightline:#CBD3DD;
+
+  --ff:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --maxw:1180px;
+  --r:14px;
+  --pad:clamp(20px,5vw,40px);
+  --sec:clamp(72px,10vw,132px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--tx);
+  font-family:var(--ff);font-size:16px;line-height:1.62;
+  font-weight:400;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* ---------- tipografia ---------- */
+.eyebrow{
+  font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tx3);margin:0 0 18px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow{align-items:flex-start}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--line2);flex:none;margin-top:.62em}
+@media(max-width:520px){.eyebrow{font-size:.64rem;letter-spacing:.12em}}
+.h1{
+  font-size:clamp(2.35rem,6.2vw,4.35rem);font-weight:700;line-height:1.04;
+  letter-spacing:-.035em;margin:0 0 22px;
+}
+.h2{
+  font-size:clamp(1.75rem,3.9vw,2.85rem);font-weight:700;line-height:1.12;
+  letter-spacing:-.028em;margin:0 0 20px;max-width:19ch;
+}
+.h2.wide{max-width:26ch}
+.h3{font-size:1.05rem;font-weight:600;letter-spacing:-.01em;margin:0 0 8px;line-height:1.35}
+.lead{font-size:clamp(1.02rem,1.5vw,1.18rem);color:var(--tx2);margin:0 0 20px;max-width:60ch;line-height:1.68}
+.p{color:var(--tx2);margin:0 0 16px;max-width:62ch}
+.p strong{color:var(--tx);font-weight:600}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+/* ---------- botões ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  height:46px;padding:0 22px;border-radius:10px;border:1px solid transparent;
+  font-size:.94rem;font-weight:600;letter-spacing:-.005em;cursor:pointer;
+  transition:background .18s,border-color .18s,color .18s,transform .18s;
+  white-space:nowrap;
+}
+.btn-amber{background:var(--amber);color:#14100A;box-shadow:0 1px 0 rgba(255,255,255,.25) inset}
+.btn-amber:hover{background:#FFBE3D}
+.btn-ghost{border-color:var(--line2);color:var(--tx);background:transparent}
+.btn-ghost:hover{border-color:var(--tx3);background:rgba(255,255,255,.03)}
+.btn-sm{height:38px;padding:0 16px;font-size:.86rem;border-radius:9px}
+.btn-dark{background:#14100A;color:#FFD98A}
+.btn-dark:hover{background:#000}
+.btn-lightghost{border-color:rgba(20,16,10,.28);color:#14100A}
+.btn-lightghost:hover{background:rgba(20,16,10,.07)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.hdr{
+  position:sticky;top:0;z-index:60;
+  background:rgba(11,14,19,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .25s,background .25s;
+}
+.hdr.stuck{border-bottom-color:var(--line);background:rgba(11,14,19,.93)}
+.hdr-in{display:flex;align-items:center;gap:20px;height:66px}
+.brand{display:flex;align-items:center;flex:none}
+.brand img{height:25px;width:auto}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{
+  font-size:.87rem;color:var(--tx2);padding:8px 10px;border-radius:8px;white-space:nowrap;
+  transition:color .16s,background .16s;
+}
+.nav a:hover{color:var(--tx);background:rgba(255,255,255,.045)}
+.hdr-cta{display:flex;align-items:center;gap:10px;flex:none}
+.burger{
+  display:none;width:42px;height:42px;border:1px solid var(--line2);background:transparent;
+  border-radius:10px;cursor:pointer;align-items:center;justify-content:center;margin-left:auto;
+}
+.burger span{display:block;width:17px;height:1.5px;background:var(--tx);position:relative}
+.burger span::before,.burger span::after{
+  content:"";position:absolute;left:0;width:17px;height:1.5px;background:var(--tx);
+}
+.burger span::before{top:-5.5px}.burger span::after{top:5.5px}
+
+.mnav{display:none;border-top:1px solid var(--line);background:var(--sf1);padding:14px var(--pad) 22px}
+.mnav.open{display:block}
+.mnav > a{display:block;padding:11px 2px;color:var(--tx2);border-bottom:1px solid var(--line);font-size:.95rem}
+.mnav > a:last-of-type{border-bottom:0}
+.mnav .btns{margin-top:16px}
+.mnav .btn{flex:1}
+
+@media(max-width:1200px){
+  .nav{display:none}
+  .hdr-cta .btn-ghost.demo{display:none}
+  .burger{display:flex;margin-left:0}
+  .hdr-cta{margin-left:auto;margin-right:10px}
+}
+@media(max-width:560px){
+  .hdr-cta .btn-amber.demo{display:none}
+}
+
+/* ============================================================
+   TRILHO DE PARADAS — elemento-assinatura da página
+   ============================================================ */
+.rail{
+  position:fixed;left:26px;top:50%;transform:translateY(-50%);z-index:40;
+  display:none;flex-direction:column;gap:0;
+}
+@media(min-width:1340px){.rail{display:flex}}
+.rail-item{display:flex;align-items:center;gap:11px;height:34px;position:relative}
+.rail-item::before{
+  content:"";position:absolute;left:4.5px;top:-17px;width:1px;height:17px;background:var(--line2);
+}
+.rail-item:first-child::before{display:none}
+.rail-dot{
+  width:10px;height:10px;border-radius:50%;border:1.5px solid var(--line2);
+  background:transparent;flex:none;transition:background .3s,border-color .3s,transform .3s;
+}
+.rail-label{
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);
+  opacity:0;transform:translateX(-5px);transition:opacity .25s,transform .25s,color .25s;
+  white-space:nowrap;pointer-events:none;font-weight:600;
+}
+.rail:hover .rail-label{opacity:1;transform:none}
+.rail-item.done .rail-dot{background:var(--line2);border-color:var(--line2)}
+.rail-item.on .rail-dot{background:var(--amber);border-color:var(--amber);transform:scale(1.25)}
+.rail-item.on .rail-label{color:var(--tx2);opacity:1;transform:none}
+.rail.hide{opacity:0;pointer-events:none;transition:opacity .3s}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  *{animation:none!important}
+}
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+.sec{padding-top:var(--sec);padding-bottom:var(--sec);position:relative}
+[id]{scroll-margin-top:84px}
+.sec-light{background:var(--lightbg);color:var(--lighttx)}
+.sec-light .h2,.sec-light .h1{color:var(--lighttx)}
+.sec-light .p,.sec-light .lead{color:var(--lighttx2)}
+.sec-light .eyebrow{color:#77828F}
+.sec-light .eyebrow::before{background:var(--lightline)}
+.hr{height:1px;background:var(--line);border:0;margin:0}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding-top:clamp(52px,7vw,86px);padding-bottom:clamp(56px,7vw,90px);position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;left:50%;top:-260px;width:900px;height:520px;
+  transform:translateX(-50%);pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(251,174,23,.09),transparent 66%);
+}
+.hero-in{position:relative;z-index:2;max-width:830px}
+.hero .lead{max-width:56ch}
+.tagline{
+  margin-top:26px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:.95rem;color:var(--tx2);display:flex;align-items:center;gap:11px;max-width:520px;
+}
+.tagline b{color:var(--tx);font-weight:600}
+.mark{width:17px;height:auto;flex:none;opacity:.95}
+
+.shot-wrap{margin-top:clamp(38px,5vw,58px);position:relative;z-index:2}
+
+/* imagens reais do produto */
+.shot-img{width:100%;height:auto;display:block}
+.shot-livre{filter:drop-shadow(0 34px 60px rgba(0,0,0,.6))}
+.shot-moldura{
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--sf1);
+  box-shadow:0 28px 70px -30px rgba(0,0,0,.85);
+}
+.shot-legenda{
+  margin:14px 0 0;font-size:.78rem;color:var(--tx3);text-align:center;letter-spacing:.02em;
+}
+
+/* ---------- moldura de navegador ---------- */
+.browser{
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--sf1);
+  box-shadow:0 28px 70px -30px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.02) inset;
+}
+.browser-bar{
+  display:flex;align-items:center;gap:8px;padding:10px 13px;background:var(--sf2);
+  border-bottom:1px solid var(--line);
+}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--line2);flex:none}
+.urlbar{
+  margin-left:8px;flex:1;height:24px;border-radius:6px;background:var(--bg);
+  border:1px solid var(--line);display:flex;align-items:center;padding:0 10px;
+  font-size:.68rem;color:var(--tx3);letter-spacing:.01em;overflow:hidden;white-space:nowrap;
+}
+.urlbar .lock{color:var(--ok);margin-right:6px}
+
+/* ============================================================
+   MOCKUP — GESTOR
+   ============================================================ */
+.gest{display:grid;grid-template-columns:150px 1fr;min-height:400px}
+.gest-side{border-right:1px solid var(--line);background:var(--sf2);padding:14px 10px;display:flex;flex-direction:column;gap:3px}
+.gest-side .mk{display:flex;align-items:center;gap:7px;padding:2px 6px 14px}
+.gest-side .mk img{height:15px;width:auto}
+.gnav{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:7px;font-size:.75rem;color:var(--tx3);white-space:nowrap}
+.gnav.on{background:var(--sf3);color:var(--tx);font-weight:600}
+.gnav .gi{width:5px;height:5px;border-radius:1.5px;background:currentColor;opacity:.55;flex:none}
+.gnav.on .gi{background:var(--amber);opacity:1}
+.gest-main{padding:16px 18px 20px;min-width:0}
+.gest-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.gest-title{font-size:1rem;font-weight:600;margin:0 0 8px;letter-spacing:-.01em}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  font-size:.68rem;padding:3px 9px;border-radius:20px;border:1px solid var(--line2);
+  color:var(--tx2);background:var(--sf2);font-variant-numeric:tabular-nums;
+}
+.chip.ok{color:var(--ok);border-color:rgba(63,191,143,.35);background:rgba(63,191,143,.08)}
+.chip.info{color:var(--info);border-color:rgba(92,157,255,.32);background:rgba(92,157,255,.08)}
+.chip.warn{color:var(--warn);border-color:rgba(224,169,74,.32);background:rgba(224,169,74,.08)}
+.chip.err{color:var(--err);border-color:rgba(239,106,106,.32);background:rgba(239,106,106,.08)}
+.gest-body{display:grid;grid-template-columns:1fr 190px;gap:18px}
+
+/* ---------- o trilho de paradas (componente do produto) ---------- */
+.stops{list-style:none;margin:0;padding:0}
+.stop{display:grid;grid-template-columns:46px 18px 1fr;gap:10px;align-items:start;padding:0}
+.stop-t{
+  font-size:.78rem;font-variant-numeric:tabular-nums;color:var(--tx2);
+  padding-top:9px;text-align:right;letter-spacing:-.01em;
+}
+.stop-m{position:relative;display:flex;justify-content:center;padding-top:13px}
+.stop-m::before{
+  content:"";position:absolute;top:0;bottom:0;width:1.5px;background:var(--line2);left:50%;transform:translateX(-50%);
+}
+.stop:first-child .stop-m::before{top:13px}
+.stop:last-child .stop-m::before{bottom:calc(100% - 13px)}
+.stop-d{
+  width:9px;height:9px;border-radius:50%;background:var(--sf1);border:1.5px solid var(--line2);
+  position:relative;z-index:2;flex:none;
+}
+.stop.done .stop-d{background:var(--ok);border-color:var(--ok)}
+.stop.now .stop-d{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 4px rgba(251,174,23,.16)}
+.stop.now .stop-t{color:var(--tx);font-weight:600}
+.stop-c{padding:7px 0 7px;min-width:0}
+.stop-n,.stop-s{display:block}
+.stop-n{font-size:.82rem;font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stop.pend .stop-n{color:var(--tx2);font-weight:400}
+.stop-s{font-size:.68rem;color:var(--tx3);margin-top:1px}
+
+.panel{border:1px solid var(--line);border-radius:10px;background:var(--sf2);padding:12px}
+.panel-t{font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:var(--tx3);font-weight:600;margin:0 0 10px}
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--line)}
+.kv:last-child{border-bottom:0}
+.kv span{font-size:.72rem;color:var(--tx3)}
+.kv b{font-size:.85rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--tx)}
+.kv b.ok{color:var(--ok)}.kv b.warn{color:var(--warn)}
+
+@media(max-width:820px){
+  .gest{grid-template-columns:1fr}
+  .gest-side{flex-direction:row;overflow:hidden;border-right:0;border-bottom:1px solid var(--line);padding:9px 10px;gap:4px}
+  .gest-side .mk{padding:0 8px 0 2px}
+  .gnav{padding:5px 8px;font-size:.7rem}
+  .gnav:nth-child(n+5){display:none}
+  .gest-body{grid-template-columns:1fr}
+}
+
+/* ============================================================
+   GRIDS E CARDS
+   ============================================================ */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+@media(max-width:620px){.g4,.g2{grid-template-columns:1fr}}
+
+.card{
+  border:1px solid var(--line);border-radius:var(--r);background:var(--sf1);padding:22px 20px;
+  transition:border-color .22s,background .22s;
+}
+.card:hover{border-color:var(--line2);background:var(--sf2)}
+.card .h3{color:var(--tx)}
+.card p{margin:0;color:var(--tx2);font-size:.92rem;line-height:1.6}
+.card-ic{
+  width:30px;height:30px;border-radius:8px;background:var(--sf3);border:1px solid var(--line2);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--tx2);
+}
+.card-ic svg{width:15px;height:15px}
+
+.sec-light .card{background:#fff;border-color:var(--lightline)}
+.sec-light .card:hover{border-color:#AEB9C6}
+.sec-light .card .h3{color:var(--lighttx)}
+.sec-light .card p{color:var(--lighttx2)}
+
+/* ---------- split de seção ---------- */
+.split{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,64px);align-items:center}
+.split.rev{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+@media(max-width:900px){.split,.split.rev{grid-template-columns:1fr;gap:34px}.split.rev>*:first-child{order:2}}
+
+/* ---------- módulos conectados ---------- */
+.hub{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-top:36px}
+.hub-col{display:grid;gap:14px}
+.hub-core{
+  display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 18px;position:relative;
+}
+.hub-core img{width:64px;height:auto}
+.hub-core .cl{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tx3);font-weight:600;text-align:center}
+.hub-core::before{
+  content:"";position:absolute;inset:-14% -6%;border-radius:50%;
+  background:radial-gradient(circle,rgba(251,174,23,.13),transparent 68%);pointer-events:none;
+}
+.mod{border:1px solid var(--line);border-radius:12px;background:var(--sf1);padding:18px 18px;transition:border-color .22s,background .22s}
+.mod:hover{border-color:var(--line2);background:var(--sf2)}
+.mod .mt{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.mod .mt b{font-size:.95rem;font-weight:600}
+.mod .mt .mb{width:6px;height:6px;border-radius:50%;background:var(--amber);flex:none}
+.mod p{margin:0;font-size:.88rem;color:var(--tx2);line-height:1.58}
+@media(max-width:900px){
+  .hub{grid-template-columns:1fr}
+  .hub-core{order:-1;flex-direction:row;justify-content:center;padding:0 0 8px}
+  .hub-core img{width:48px}
+}
+
+/* ============================================================
+   ROTEIRIZADOR
+   ============================================================ */
+.steps{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--sf2)}
+.step{display:flex;align-items:center;gap:7px;font-size:.72rem;color:var(--tx3);padding:3px 0}
+.step .sn{
+  width:19px;height:19px;border-radius:50%;border:1.5px solid var(--line2);display:flex;
+  align-items:center;justify-content:center;font-size:.62rem;font-weight:700;flex:none;
+  font-variant-numeric:tabular-nums;
+}
+.step.done{color:var(--tx2)}
+.step.done .sn{background:var(--line2);border-color:var(--line2);color:var(--tx)}
+.step.on{color:var(--tx);font-weight:600}
+.step.on .sn{background:var(--amber);border-color:var(--amber);color:#14100A}
+.step-sep{width:16px;height:1px;background:var(--line2);margin:0 9px;flex:none}
+@media(max-width:700px){.step-sep{width:9px;margin:0 5px}.step .sl{display:none}.step.on .sl{display:inline}}
+
+.rot-body{padding:16px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:760px){.rot-body{grid-template-columns:1fr}}
+.rota{border:1px solid var(--line);border-radius:11px;background:var(--sf2);padding:14px;position:relative;overflow:hidden}
+.rota::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--lc,var(--info))}
+.rota-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:11px}
+.rota-h b{font-size:.85rem;font-weight:600}
+.rota-m{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:11px;padding-top:11px;border-top:1px solid var(--line)}
+.met{min-width:0}
+.met i{display:block;font-style:normal;font-size:.6rem;letter-spacing:.11em;text-transform:uppercase;color:var(--tx3);margin-bottom:2px}
+.met b{font-size:.92rem;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+
+.encaixe{margin-top:18px;border:1px solid var(--line);border-radius:12px;background:var(--sf1);overflow:hidden}
+.encaixe-h{padding:12px 15px;border-bottom:1px solid var(--line);background:var(--sf2);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.encaixe-h b{font-size:.85rem;font-weight:600}
+.encaixe-h span{font-size:.73rem;color:var(--tx3)}
+.opt{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:12px 15px;border-bottom:1px solid var(--line)}
+.opt:last-child{border-bottom:0}
+.opt.best{background:rgba(63,191,143,.045)}
+.opt-n{font-size:.86rem;font-weight:500;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+.opt-d{font-size:.73rem;color:var(--tx3);font-variant-numeric:tabular-nums}
+.opt-r{text-align:right;font-size:.73rem;color:var(--tx3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.opt-r b{display:block;font-size:.9rem;color:var(--tx);font-weight:600}
+
+/* ============================================================
+   TELEFONES
+   ============================================================ */
+.phones{display:flex;gap:clamp(16px,3vw,32px);justify-content:center;flex-wrap:wrap;align-items:flex-start}
+.phone{
+  width:250px;flex:none;border-radius:26px;padding:9px;border:1px solid var(--line2);
+  background:var(--sf2);box-shadow:0 24px 55px -26px rgba(0,0,0,.9);
+}
+.phone-sc{border-radius:19px;overflow:hidden;background:var(--bg);min-height:452px;display:flex;flex-direction:column}
+.phone.light{border-color:var(--lightline);background:#DDE3EA}
+.phone.light .phone-sc{background:#F4F6F9;color:var(--lighttx)}
+.ph-top{display:flex;align-items:center;justify-content:space-between;padding:9px 14px 4px;font-size:.63rem;color:var(--tx3);font-variant-numeric:tabular-nums}
+.phone.light .ph-top{color:#8A94A2}
+.ph-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 14px 12px;border-bottom:1px solid var(--line)}
+.phone.light .ph-hd{border-color:var(--lightline)}
+.ph-hd img{height:13px;width:auto}
+.ph-hd .who{font-size:.66rem;color:var(--tx3)}
+.phone.light .ph-hd .who{color:#77828F}
+.ph-body{padding:16px 14px;flex:1;display:flex;flex-direction:column}
+.ph-lab{font-size:.6rem;letter-spacing:.17em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:9px}
+.ph-name{font-size:1.28rem;font-weight:700;letter-spacing:-.025em;line-height:1.15;margin-bottom:5px}
+.ph-sub{font-size:.78rem;color:var(--tx3);font-variant-numeric:tabular-nums;margin-bottom:3px}
+.phone.light .ph-sub{color:#6C7683}
+.ph-addr{font-size:.75rem;color:var(--tx2);margin-bottom:15px;line-height:1.45}
+.phone.light .ph-addr{color:#4A5563}
+.ph-btn{
+  height:41px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:.84rem;font-weight:600;margin-bottom:9px;
+}
+.ph-btn.primary{background:var(--amber);color:#14100A}
+.ph-duo{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.ph-btn.ok2{border:1px solid rgba(63,191,143,.45);color:var(--ok);background:rgba(63,191,143,.08);margin:0}
+.ph-btn.no2{border:1px solid var(--line2);color:var(--tx2);background:transparent;margin:0}
+.phone.light .ph-btn.no2{border-color:var(--lightline);color:#5A6472}
+.phone.light .ph-btn.ok2{color:#137A55;border-color:rgba(19,122,85,.4);background:rgba(19,122,85,.08)}
+.phone.light .ph-lab{color:#B4780A}
+.ph-next{margin-top:auto;padding-top:15px;border-top:1px solid var(--line)}
+.phone.light .ph-next{border-color:var(--lightline)}
+.ph-next .nl{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tx3);margin-bottom:8px;font-weight:600}
+.ph-row{display:flex;align-items:center;gap:9px;padding:4px 0;font-size:.76rem;color:var(--tx2)}
+.phone.light .ph-row{color:#4A5563}
+.ph-row .t{font-variant-numeric:tabular-nums;color:var(--tx3);width:36px;flex:none}
+.phone.light .ph-row .t{color:#8A94A2}
+.ph-row .dt{width:6px;height:6px;border-radius:50%;background:var(--line2);flex:none}
+.phone.light .ph-row .dt{background:#B8C2CE}
+.phone-cap{text-align:center;font-size:.72rem;color:var(--tx3);margin-top:12px;letter-spacing:.03em}
+
+/* passageiro */
+.ph-state{
+  border:1px solid var(--line);border-radius:12px;background:var(--sf1);padding:14px;margin-bottom:14px;
+}
+.ph-state .st{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ok);font-weight:700;margin-bottom:7px}
+.ph-state .sv{font-size:1.02rem;font-weight:600;letter-spacing:-.02em;line-height:1.3}
+.ph-state .sd{font-size:.74rem;color:var(--tx3);margin-top:5px;font-variant-numeric:tabular-nums}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:42px 16px 1fr;gap:8px;align-items:start}
+.tl .tt{font-size:.72rem;font-variant-numeric:tabular-nums;color:var(--tx3);padding-top:7px;text-align:right}
+.tl .tm{position:relative;display:flex;justify-content:center;padding-top:11px}
+.tl .tm::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1.5px;background:var(--line2);transform:translateX(-50%)}
+.tl li:first-child .tm::before{top:11px}
+.tl li:last-child .tm::before{bottom:calc(100% - 11px)}
+.tl .td{width:8px;height:8px;border-radius:50%;background:var(--sf1);border:1.5px solid var(--line2);z-index:2}
+.tl li.ok .td{background:var(--ok);border-color:var(--ok)}
+.tl li.now .td{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 4px rgba(251,174,23,.15)}
+.tl .tc{padding:5px 0;font-size:.78rem;color:var(--tx2)}
+.tl li.now .tc{color:var(--tx);font-weight:600}
+.tl li.pend .tc{color:var(--tx3)}
+
+/* ============================================================
+   PLANEJADO × REALIZADO
+   ============================================================ */
+.pxr{border:1px solid var(--line);border-radius:var(--r);background:var(--sf1);overflow:hidden}
+.pxr-h{display:grid;grid-template-columns:1fr 92px 92px 84px;gap:10px;padding:11px 18px;background:var(--sf2);border-bottom:1px solid var(--line)}
+.pxr-h span{font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--tx3);font-weight:600}
+.pxr-h span:not(:first-child){text-align:right}
+.pxr-r{display:grid;grid-template-columns:1fr 92px 92px 84px;gap:10px;padding:12px 18px;border-bottom:1px solid var(--line);align-items:center}
+.pxr-r:last-child{border-bottom:0}
+.pxr-r .ev{font-size:.87rem;color:var(--tx)}
+.pxr-r .pl,.pxr-r .re{font-size:.9rem;font-variant-numeric:tabular-nums;text-align:right;letter-spacing:-.01em}
+.pxr-r .pl{color:var(--tx3)}
+.pxr-r .re{color:var(--tx);font-weight:600}
+.pxr-r .dl{text-align:right}
+.delta{font-style:normal;font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:20px;font-variant-numeric:tabular-nums;display:inline-block}
+.delta.ok{color:var(--ok);background:rgba(63,191,143,.1);border:1px solid rgba(63,191,143,.28)}
+.delta.warn{color:var(--warn);background:rgba(224,169,74,.1);border:1px solid rgba(224,169,74,.28)}
+@media(max-width:620px){
+  .pxr-h,.pxr-r{grid-template-columns:1fr 66px 66px 62px;gap:6px;padding-left:13px;padding-right:13px}
+  .pxr-r .ev{font-size:.79rem}
+  .pxr-r .pl,.pxr-r .re{font-size:.82rem}
+}
+.quote{
+  margin:clamp(30px,4vw,44px) 0 0;padding:24px 26px;border-left:2px solid var(--amber);
+  background:linear-gradient(90deg,rgba(251,174,23,.06),transparent 72%);border-radius:0 12px 12px 0;
+}
+.quote p{margin:0;font-size:clamp(1.05rem,2vw,1.32rem);font-weight:600;letter-spacing:-.02em;line-height:1.42;color:var(--tx);max-width:34ch}
+.quote p em{font-style:normal;color:var(--tx3);font-weight:400;display:block}
+
+/* ============================================================
+   ESCOLAR
+   ============================================================ */
+.badge{
+  display:inline-flex;align-items:center;gap:7px;font-size:.68rem;font-weight:600;letter-spacing:.05em;
+  padding:5px 12px;border-radius:20px;border:1px solid var(--line2);color:var(--tx2);background:var(--sf2);
+}
+.badge .bd{width:5px;height:5px;border-radius:50%;background:var(--amber)}
+.esc{border:1px solid var(--line);border-radius:var(--r);background:var(--sf1);padding:22px}
+.esc-h{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:14px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.esc-h b{font-size:.9rem;font-weight:600}
+.esc-h span{font-size:.72rem;color:var(--tx3)}
+
+/* ============================================================
+   HISTÓRIA (banda clara)
+   ============================================================ */
+.hist{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,70px)}
+@media(max-width:900px){.hist{grid-template-columns:1fr;gap:28px}}
+.hist-list{list-style:none;margin:0;padding:0}
+.hist-list li{
+  padding:13px 0 13px 26px;border-bottom:1px solid var(--lightline);position:relative;
+  color:var(--lighttx2);font-size:.95rem;line-height:1.55;
+}
+.hist-list li:last-child{border-bottom:0}
+.hist-list li::before{
+  content:"";position:absolute;left:2px;top:22px;width:7px;height:7px;border-radius:50%;
+  border:1.5px solid #A9B4C1;
+}
+.big-quote{
+  margin-top:clamp(30px,4vw,46px);font-size:clamp(1.5rem,3.4vw,2.5rem);font-weight:700;
+  letter-spacing:-.03em;line-height:1.14;color:var(--lighttx);max-width:16ch;
+}
+.big-quote span{color:#8E99A6;display:block}
+
+/* ============================================================
+   TRANSPORTADORA
+   ============================================================ */
+.benef{border-top:1px solid var(--line)}
+.benef-i{padding:20px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:20px;align-items:baseline}
+.benef-i b{font-size:1.02rem;font-weight:600;letter-spacing:-.015em}
+.benef-i p{margin:0;color:var(--tx2);font-size:.93rem}
+@media(max-width:700px){.benef-i{grid-template-columns:1fr;gap:5px}}
+
+.fecho{
+  margin:clamp(34px,4.5vw,52px) 0 0;font-size:clamp(1.22rem,2.6vw,1.8rem);font-weight:700;
+  letter-spacing:-.026em;line-height:1.26;color:var(--tx3);max-width:26ch;
+}
+.fecho span{display:block;color:var(--tx)}
+
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.cta{
+  background:linear-gradient(140deg,#FBAE17 0%,#F9971A 46%,#F26A1B 100%);
+  color:#14100A;position:relative;overflow:hidden;
+}
+.cta::before{
+  content:"";position:absolute;right:-8%;top:-40%;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.22),transparent 62%);pointer-events:none;
+}
+.cta-in{position:relative;z-index:2;max-width:720px}
+.cta .wrap{padding-left:var(--pad);padding-right:var(--pad)}
+.cta-in h2{font-size:clamp(1.85rem,4.2vw,3rem);font-weight:700;letter-spacing:-.032em;line-height:1.1;margin:0 0 18px;color:#14100A}
+.cta-in p{color:rgba(20,16,10,.78);font-size:clamp(1rem,1.5vw,1.13rem);margin:0 0 12px;max-width:56ch}
+.cta-in .sig{margin-top:26px;font-size:1.08rem;font-weight:700;letter-spacing:-.02em;color:#14100A}
+
+/* ============================================================
+   FORMULÁRIO DE CONTATO (dentro da faixa CTA)
+   ============================================================ */
+.cta-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:clamp(30px,5vw,64px);align-items:start;position:relative;z-index:2}
+@media(max-width:940px){.cta-grid{grid-template-columns:1fr;gap:34px}}
+
+.fcard{
+  background:var(--sf1);border:1px solid var(--line);border-radius:16px;padding:clamp(22px,3vw,30px);
+  color:var(--tx);box-shadow:0 26px 60px -26px rgba(20,16,10,.55);
+}
+.fcard-h{margin:0 0 4px;font-size:1.12rem;font-weight:700;letter-spacing:-.02em;color:var(--tx)}
+.fcard-s{margin:0 0 20px;font-size:.86rem;color:var(--tx2);line-height:1.5}
+.fcard-s a{color:var(--amber);font-weight:500}
+
+.fld{margin-bottom:15px}
+.fld label{display:block;font-size:.78rem;font-weight:600;color:var(--tx2);margin-bottom:6px;letter-spacing:.005em}
+.fld label .req{color:var(--err);margin-left:2px}
+.fld input,.fld select,.fld textarea{
+  width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:9px;
+  color:var(--tx);font-family:var(--ff);font-size:.92rem;padding:11px 12px;line-height:1.4;
+  transition:border-color .16s,background .16s;-webkit-appearance:none;appearance:none;
+}
+.fld textarea{min-height:88px;resize:vertical}
+.fld select{
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A3ADBB' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 11px center;background-size:15px;padding-right:34px;cursor:pointer;
+}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--amber);background:var(--sf2)}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--tx3)}
+.fld.err input,.fld.err select,.fld.err textarea{border-color:var(--err)}
+.fld .msg{display:none;font-size:.76rem;color:var(--err);margin-top:5px}
+.fld.err .msg{display:block}
+.fld-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.fld-row{grid-template-columns:1fr;gap:0}}
+
+.consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 18px}
+.consent input{width:16px;height:16px;flex:none;margin-top:2px;accent-color:var(--amber);cursor:pointer;-webkit-appearance:auto;appearance:auto}
+.consent span{font-size:.79rem;color:var(--tx2);line-height:1.5}
+.consent a{color:var(--tx2);text-decoration:underline;text-underline-offset:2px}
+.consent.err span{color:var(--err)}
+
+.fsend{width:100%;height:46px;border:0;border-radius:10px;background:var(--amber);color:#14100A;font-weight:700;font-size:.94rem;cursor:pointer;transition:background .18s}
+.fsend:hover{background:#FFBE3D}
+.fsend:disabled{opacity:.6;cursor:default}
+.fnote{margin:12px 0 0;font-size:.76rem;color:var(--tx2);text-align:center;line-height:1.5}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.fstate{display:none;text-align:center;padding:16px 4px}
+.fstate.on{display:block}
+.fstate .ic{
+  width:46px;height:46px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;
+  background:rgba(63,191,143,.12);border:1px solid rgba(63,191,143,.4);color:var(--ok);
+}
+.fstate.bad .ic{background:rgba(239,106,106,.12);border-color:rgba(239,106,106,.4);color:var(--err)}
+.fstate h3{margin:0 0 8px;font-size:1.08rem;font-weight:700;letter-spacing:-.02em}
+.fstate p{margin:0;font-size:.88rem;color:var(--tx2);line-height:1.55}
+.fstate p a{color:var(--amber);font-weight:500}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.ft{border-top:1px solid var(--line);padding-top:56px;padding-bottom:30px;background:var(--bg)}
+.ft-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr);gap:36px;padding-bottom:34px;border-bottom:1px solid var(--line)}
+@media(max-width:760px){.ft-top{grid-template-columns:1fr;gap:28px}}
+.ft-brand img{height:24px;width:auto;margin-bottom:14px}
+.ft-brand p{color:var(--tx2);font-size:.92rem;margin:0 0 18px;max-width:34ch}
+.ft-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:560px){.ft-cols{grid-template-columns:1fr 1fr}}
+.ft-cols h4{font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tx3);font-weight:600;margin:0 0 12px}
+.ft-cols a{display:block;font-size:.88rem;color:var(--tx2);padding:5px 0;transition:color .16s}
+.ft-cols a:hover{color:var(--tx)}
+.ft-bot{padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+.ft-bot p{margin:0;font-size:.8rem;color:var(--tx3)}
+</style>
+</head>
+<body>
+
+<!-- =========================== HEADER =========================== -->
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#topo" aria-label="temvia — início">
+      <img src="assets/logo-temvia-dark.png" alt="temvia" width="337" height="80">
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#plataforma">Plataforma</a>
+      <a href="#roteirizacao">Roteirização</a>
+      <a href="#motorista">Motorista</a>
+      <a href="#passageiro">Passageiro</a>
+      <a href="#para-quem-opera">Para quem opera o transporte</a>
+      <a href="#historia">Nossa história</a>
+    </nav>
+    <div class="hdr-cta">
+      <a class="btn btn-sm btn-ghost demo" href="#contato" data-demo>Agendar demonstração</a>
+      <a class="btn btn-sm btn-amber" href="#" data-login>Entrar</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mnav"><span></span></button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Navegação mobile">
+    <a href="#plataforma">Plataforma</a>
+    <a href="#roteirizacao">Roteirização</a>
+    <a href="#motorista">Motorista</a>
+    <a href="#passageiro">Passageiro</a>
+    <a href="#para-quem-opera">Para quem opera o transporte</a>
+    <a href="#historia">Nossa história</a>
+    <div class="btns">
+      <a class="btn btn-ghost" href="#contato" data-demo>Agendar demonstração</a>
+      <a class="btn btn-amber" href="#" data-login>Entrar</a>
+    </div>
+  </nav>
+</header>
+
+<!-- =========================== TRILHO =========================== -->
+<nav class="rail" id="rail" aria-hidden="true"></nav>
+
+<main id="topo">
+
+<!-- =========================== HERO =========================== -->
+<section class="hero" data-rail="Início">
+  <div class="wrap">
+    <div class="hero-in">
+      <p class="eyebrow rv">Plataforma de gestão para transporte fretado</p>
+      <h1 class="h1 rv">Sua operação de fretamento, conectada de ponta a ponta.</h1>
+      <p class="lead rv">A temvia conecta gestão, roteirização, motorista, passageiro e empresa cliente em uma única plataforma. Menos planilhas, menos desencontro de informação e mais controle sobre o que acontece antes, durante e depois de cada viagem.</p>
+      <div class="btns rv">
+        <a class="btn btn-amber" href="#plataforma">Conhecer a temvia</a>
+        <a class="btn btn-ghost" href="#" data-login>Entrar na plataforma</a>
+      </div>
+      <p class="tagline rv">
+        <img class="mark" src="assets/simbolo-temvia.png" alt="" width="192" height="141" aria-hidden="true">
+        <span><b>Feita dentro da operação.</b> Criada para quem vive a operação.</span>
+      </p>
+    </div>
+
+    <!-- TELA REAL DO GESTOR -->
+    <figure class="shot-wrap rv" style="margin-left:0;margin-right:0">
+      <picture>
+        <source srcset="assets/tela-gestor.webp" type="image/webp">
+        <img class="shot-img shot-livre" src="assets/tela-gestor.png" width="1486" height="968"
+             alt="Tela do Gestor da temvia: linha, resumo da rota, motorista e lista de passageiros com horários e pontos de embarque."
+             fetchpriority="high" decoding="async">
+      </picture>
+      <figcaption class="shot-legenda">Painel do Gestor &middot; linha, rota, motorista e passageiros num só lugar.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- =========================== 2. O PROBLEMA =========================== -->
+<section class="sec" data-rail="Problema">
+  <div class="wrap">
+    <p class="eyebrow rv">O que acontece hoje</p>
+    <h2 class="h2 wide rv">Fretamento muda todos os dias. A gestão não pode depender de uma planilha.</h2>
+    <p class="lead rv">Funcionários mudam de endereço, turno, linha, férias e situação cadastral. Motoristas são substituídos. Rotas extras surgem de última hora. Novos passageiros precisam ser encaixados. E os horários precisam chegar a quem realmente importa.</p>
+    <p class="p rv">Quando essas informações ficam espalhadas entre planilhas, grupos de WhatsApp e o conhecimento individual de algumas pessoas, a operação perde o controle.</p>
+
+    <div class="grid g4 rv" style="margin-top:38px">
+      <article class="card">
+        <div class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h10M3 18h14"/><path d="M17 15l4 4m0-4l-4 4"/></svg></div>
+        <h3 class="h3">Informação desencontrada</h3>
+        <p>Mudanças acontecem na operação, mas nem sempre chegam a todos.</p>
+      </article>
+      <article class="card">
+        <div class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.6-3.4 3.3-5.4 6.5-5.4s5.9 2 6.5 5.4"/></svg></div>
+        <h3 class="h3">Rota que mora na cabeça de uma pessoa</h3>
+        <p>A operação não pode parar porque quem conhece os itinerários não está disponível.</p>
+      </article>
+      <article class="card">
+        <div class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 3z"/><path d="M12 8v3.2M12 13.4v.1"/></svg></div>
+        <h3 class="h3">Passageiro sem informação</h3>
+        <p>Mudança de horário e de rota precisa chegar imediatamente a quem será transportado.</p>
+      </article>
+      <article class="card">
+        <div class="card-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.2V12l3 1.8"/></svg></div>
+        <h3 class="h3">Gestão sem visão do realizado</h3>
+        <p>Planejar é importante. Saber o que realmente aconteceu é ainda mais.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- =========================== 3. A PLATAFORMA =========================== -->
+<section class="sec" id="plataforma" data-rail="Plataforma">
+  <div class="wrap">
+    <p class="eyebrow rv">A plataforma</p>
+    <h2 class="h2 wide rv">Uma plataforma. Toda a cadeia conectada.</h2>
+    <p class="lead rv">Cada pessoa acessa exatamente o que precisa para participar da operação — e nada além disso.</p>
+
+    <div class="hub rv">
+      <div class="hub-col">
+        <article class="mod">
+          <div class="mt"><i class="mb"></i><b>Gestão</b></div>
+          <p>Linhas, passageiros, motoristas, veículos, solicitações, roteirização e controle operacional em um único ambiente.</p>
+        </article>
+        <article class="mod">
+          <div class="mt"><i class="mb"></i><b>Motorista</b></div>
+          <p>Próximo embarque, navegação, presença, ausência, desembarque e comunicação na palma da mão.</p>
+        </article>
+      </div>
+      <div class="hub-core">
+        <img src="assets/simbolo-temvia.png" alt="Símbolo temvia" width="192" height="141">
+        <span class="cl">uma plataforma</span>
+      </div>
+      <div class="hub-col">
+        <article class="mod">
+          <div class="mt"><i class="mb"></i><b>Passageiro</b></div>
+          <p>Horários, linha, localização, comunicados e acompanhamento da própria jornada.</p>
+        </article>
+        <article class="mod">
+          <div class="mt"><i class="mb"></i><b>Empresa cliente</b></div>
+          <p>Visibilidade da operação contratada, acompanhamento e um canal estruturado de solicitações com a transportadora.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- =========================== 4. ROTEIRIZAÇÃO =========================== -->
+<section class="sec" id="roteirizacao" data-rail="Roteirização">
+  <div class="wrap">
+    <p class="eyebrow rv">Roteirização inteligente</p>
+    <h2 class="h2 wide rv">Da lista de passageiros para uma operação pronta.</h2>
+    <p class="lead rv">A temvia usa regras reais da operação para ajudar o gestor a montar e ajustar rotas. Não é só colocar pontos no mapa: o sistema considera capacidade, localização, tempo em rota, sequência de embarque e horários.</p>
+
+    <figure class="shot-wrap rv" style="margin-bottom:clamp(30px,4vw,46px)">
+      <div class="shot-moldura">
+        <picture>
+          <source srcset="assets/tela-roteirizador.webp" type="image/webp">
+          <img class="shot-img" src="assets/tela-roteirizador.jpg" width="1500" height="1000"
+               alt="Roteirizador Inteligente da temvia: plano sugerido com métricas da operação, rascunho editável das rotas e mapa com as rotas traçadas."
+               loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <figcaption class="shot-legenda">Roteirizador Inteligente &middot; plano sugerido, rascunho editável e mapa das rotas.</figcaption>
+    </figure>
+
+    <div class="grid g3 rv">
+      <article class="card">
+        <h3 class="h3">Roteirizador Inteligente</h3>
+        <p>Cole a lista de passageiros e deixe a temvia propor quantas rotas são necessárias, quem vai em cada uma, o veículo adequado, a ordem de embarque, os horários, a distância e a duração.</p>
+      </article>
+      <article class="card">
+        <h3 class="h3">Encaixar passageiro</h3>
+        <p>Entrou uma pessoa nova? A temvia analisa as linhas existentes e mostra onde ela pode ser incluída respeitando capacidade e tempo de viagem. Se nenhuma comportar diretamente, avalia alternativas e remanejamentos.</p>
+      </article>
+      <article class="card">
+        <h3 class="h3">Otimização de rota</h3>
+        <p>Reordene os pontos buscando uma operação mais eficiente, sem perder as restrições do serviço — capacidade, janelas de horário e sequência de embarque.</p>
+      </article>
+    </div>
+
+    <!-- encaixe -->
+    <div class="encaixe rv">
+      <div class="encaixe-h">
+        <b>Encaixar passageiro &middot; Fernanda Lima</b>
+        <span>R. Cachoeira do Vale, 302 &middot; Turno manhã &middot; Entrada 06:30</span>
+      </div>
+      <div class="opt best">
+        <div>
+          <div class="opt-n">Linha 03 &middot; Zona Leste <span class="chip ok">Melhor opção</span></div>
+          <div class="opt-d">14 de 15 lugares &middot; desvio de 2,1 km &middot; embarque previsto 05:47</div>
+        </div>
+        <div class="opt-r"><b>+4 min</b>na rota</div>
+      </div>
+      <div class="opt">
+        <div>
+          <div class="opt-n">Linha 07 &middot; Sapopemba</div>
+          <div class="opt-d">11 de 15 lugares &middot; desvio de 6,8 km &middot; embarque previsto 05:29</div>
+        </div>
+        <div class="opt-r"><b>+13 min</b>na rota</div>
+      </div>
+      <div class="opt">
+        <div>
+          <div class="opt-n">Linha 02 &middot; Centro <span class="chip err">Sem vaga</span></div>
+          <div class="opt-d">4 de 4 lugares &middot; exige remanejamento de 1 passageiro</div>
+        </div>
+        <div class="opt-r"><b>—</b>avaliar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- =========================== 5. MOTORISTA =========================== -->
+<section class="sec" id="motorista" data-rail="Motorista">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow rv">Aplicativo do motorista</p>
+        <h2 class="h2 rv">Na rua, o motorista precisa de simplicidade.</h2>
+        <p class="p rv">Durante a viagem, a tela mostra o que importa naquele momento: quem é o próximo, onde é o ponto, a que horas está previsto e o que fazer em seguida. Nada de rolar lista para achar a informação certa com o carro andando.</p>
+        <p class="p rv">Depois do embarque, o próximo passageiro assume a tela. Na volta, o botão passa a ser <strong>Desembarcou</strong>.</p>
+        <p class="p rv">Cada ação registra o <strong>horário real</strong> da operação. Assim a temvia deixa de saber apenas o que estava planejado e passa a registrar o que realmente aconteceu.</p>
+      </div>
+      <div class="rv">
+        <div class="phones">
+          <!-- escuro -->
+          <div class="phone">
+            <div class="phone-sc">
+              <div class="ph-top"><span class="num">05:39</span><span>&#9679;&#9679;&#9679;</span></div>
+              <div class="ph-hd"><img src="assets/logo-temvia-dark.png" alt="temvia"><span class="who">Rota 3 &middot; Manhã</span></div>
+              <div class="ph-body">
+                <p class="ph-lab">Próximo embarque</p>
+                <p class="ph-name">Maria Oliveira</p>
+                <p class="ph-sub">Previsto 05:42</p>
+                <p class="ph-addr">R. Guaicurus, 1450 &middot; Tatuapé</p>
+                <div class="ph-btn primary">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 4L3 11.4l7.6 2.9L13.5 22z"/></svg>
+                  Navegar
+                </div>
+                <div class="ph-duo">
+                  <div class="ph-btn ok2">Embarcou</div>
+                  <div class="ph-btn no2">Ausente</div>
+                </div>
+                <div class="ph-next">
+                  <p class="nl">Depois</p>
+                  <div class="ph-row"><span class="t num">05:49</span><i class="dt"></i>Carlos Nogueira</div>
+                  <div class="ph-row"><span class="t num">05:55</span><i class="dt"></i>Juliana Reis</div>
+                  <div class="ph-row"><span class="t num">06:18</span><i class="dt"></i>Chegada &middot; Planta</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- claro -->
+          <div class="phone light">
+            <div class="phone-sc">
+              <div class="ph-top"><span class="num">17:41</span><span>&#9679;&#9679;&#9679;</span></div>
+              <div class="ph-hd"><img src="assets/logo-temvia-claro.png" alt="temvia"><span class="who">Rota 3 &middot; Retorno</span></div>
+              <div class="ph-body">
+                <p class="ph-lab">Próximo desembarque</p>
+                <p class="ph-name">Rodrigo Alves</p>
+                <p class="ph-sub">Previsto 17:43</p>
+                <p class="ph-addr">Av. Paulo VI, 88 &middot; Vila Formosa</p>
+                <div class="ph-btn primary">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 4L3 11.4l7.6 2.9L13.5 22z"/></svg>
+                  Navegar
+                </div>
+                <div class="ph-duo">
+                  <div class="ph-btn ok2">Desembarcou</div>
+                  <div class="ph-btn no2">Ajustar</div>
+                </div>
+                <div class="ph-next">
+                  <p class="nl">Depois</p>
+                  <div class="ph-row"><span class="t num">17:52</span><i class="dt"></i>Ana Paula Ferreira</div>
+                  <div class="ph-row"><span class="t num">18:04</span><i class="dt"></i>Juliana Reis</div>
+                  <div class="ph-row"><span class="t num">18:20</span><i class="dt"></i>Encerrar rota</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-cap">Tema escuro para a madrugada e claro para o fim de tarde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- =========================== 6. PLANEJADO x REALIZADO =========================== -->
+<section class="sec" data-rail="Realizado">
+  <div class="wrap">
+    <p class="eyebrow rv">Planejado &times; realizado</p>
+    <h2 class="h2 wide rv">Pontualidade deixa de ser percepção e vira dado.</h2>
+    <p class="lead rv">Horário previsto e horário realizado passam a fazer parte da mesma operação. A cada viagem, a temvia registra os eventos reais — e a diferença entre o plano e o que aconteceu fica visível por linha, turno, motorista e período.</p>
+
+    <div class="pxr rv" style="margin-top:34px">
+      <div class="pxr-h">
+        <span>Evento &middot; Rota 3 &middot; 25/08</span><span>Previsto</span><span>Realizado</span><span>Diferença</span>
+      </div>
+      <div class="pxr-r"><span class="ev">Início da viagem</span><span class="pl num">05:20</span><span class="re num">05:18</span><span class="dl"><i class="delta ok num">&minus;2 min</i></span></div>
+      <div class="pxr-r"><span class="ev">Embarque &middot; Ana Paula Ferreira</span><span class="pl num">05:31</span><span class="re num">05:30</span><span class="dl"><i class="delta ok num">&minus;1 min</i></span></div>
+      <div class="pxr-r"><span class="ev">Embarque &middot; Rodrigo Alves</span><span class="pl num">05:36</span><span class="re num">05:37</span><span class="dl"><i class="delta ok num">+1 min</i></span></div>
+      <div class="pxr-r"><span class="ev">Ausência &middot; Carlos Nogueira</span><span class="pl num">05:49</span><span class="re num">05:49</span><span class="dl"><i class="delta warn">registrada</i></span></div>
+      <div class="pxr-r"><span class="ev">Chegada à planta</span><span class="pl num">06:18</span><span class="re num">06:24</span><span class="dl"><i class="delta warn num">+6 min</i></span></div>
+      <div class="pxr-r"><span class="ev">Encerramento da rota</span><span class="pl num">06:20</span><span class="re num">06:26</span><span class="dl"><i class="delta warn num">+6 min</i></span></div>
+    </div>
+
+    <div class="quote rv">
+      <p>Não basta saber a que horas a van deveria chegar.<em>É preciso saber a que horas ela chegou.</em></p>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- =========================== 7. PASSAGEIRO =========================== -->
+<section class="sec" id="passageiro" data-rail="Passageiro">
+  <div class="wrap">
+    <div class="split rev">
+      <div class="rv">
+        <div class="phones">
+          <div class="phone">
+            <div class="phone-sc">
+              <div class="ph-top"><span class="num">05:39</span><span>&#9679;&#9679;&#9679;</span></div>
+              <div class="ph-hd"><img src="assets/logo-temvia-dark.png" alt="temvia"><span class="who">Linha 03 &middot; Manhã</span></div>
+              <div class="ph-body">
+                <div class="ph-state">
+                  <p class="st">Agora</p>
+                  <p class="sv">Sua van está a caminho.</p>
+                  <p class="sd">Embarque previsto às 05:42 &middot; R. Guaicurus, 1450</p>
+                </div>
+                <ul class="tl">
+                  <li class="ok"><span class="tt num">05:18</span><span class="tm"><i class="td"></i></span><span class="tc">Viagem iniciada</span></li>
+                  <li class="now"><span class="tt num">05:42</span><span class="tm"><i class="td"></i></span><span class="tc">Seu embarque</span></li>
+                  <li class="pend"><span class="tt num">06:18</span><span class="tm"><i class="td"></i></span><span class="tc">Chegada à empresa</span></li>
+                  <li class="pend"><span class="tt num">17:20</span><span class="tm"><i class="td"></i></span><span class="tc">Saída &middot; retorno</span></li>
+                  <li class="pend"><span class="tt num">17:43</span><span class="tm"><i class="td"></i></span><span class="tc">Seu desembarque</span></li>
+                </ul>
+                <div class="ph-next">
+                  <p class="nl">Comunicado</p>
+                  <div class="ph-row" style="align-items:flex-start"><i class="dt" style="margin-top:7px;background:var(--amber)"></i><span>Sábado 30/08 sem operação no turno da manhã.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-cap">A tela acompanha a jornada da pessoa, não o GPS do veículo.</p>
+      </div>
+      <div>
+        <p class="eyebrow rv">Aplicativo do passageiro</p>
+        <h2 class="h2 rv">O passageiro acompanha a própria jornada.</h2>
+        <p class="p rv">A tela se adapta ao momento da viagem. Antes do embarque: <strong>sua van está a caminho</strong>. Depois: <strong>você embarcou às 05:42</strong>. Durante: <strong>a caminho da empresa, chegada prevista 06:18</strong>. Na volta: <strong>desembarque confirmado às 17:43</strong>.</p>
+        <p class="p rv">Comunicados, horários, acompanhamento e informações da operação ficam reunidos no mesmo lugar — sem depender de grupo de mensagem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- =========================== 8. ESCOLAR =========================== -->
+<section class="sec" data-rail="Escolar">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow rv">Em evolução</p>
+        <h2 class="h2 rv">A mesma tecnologia pode acompanhar quem mais importa.</h2>
+        <p class="p rv">A arquitetura da temvia também está preparada para operações de transporte escolar. O aluno é acompanhado como viajante e o responsável recebe as informações da jornada autorizada.</p>
+        <p class="p rv">Além da localização, o responsável acompanha os eventos reais da viagem — não só onde o veículo está, mas o que já aconteceu.</p>
+        <p class="rv"><span class="badge"><i class="bd"></i>temvia Escolar &middot; em evolução</span></p>
+      </div>
+      <div class="esc rv">
+        <div class="esc-h"><b>Lucas &middot; 4º ano</b><span>Rota Escolar 02 &middot; hoje</span></div>
+        <ul class="tl">
+          <li class="ok"><span class="tt num">06:42</span><span class="tm"><i class="td"></i></span><span class="tc">Embarque confirmado</span></li>
+          <li class="ok"><span class="tt num">07:18</span><span class="tm"><i class="td"></i></span><span class="tc">Chegada à escola</span></li>
+          <li class="ok"><span class="tt num">12:07</span><span class="tm"><i class="td"></i></span><span class="tc">Saída da escola</span></li>
+          <li class="now"><span class="tt num">12:39</span><span class="tm"><i class="td"></i></span><span class="tc">Desembarque confirmado</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- =========================== 9. TRANSPORTADORA =========================== -->
+<section class="sec" id="para-quem-opera" data-rail="Quem opera">
+  <div class="wrap">
+    <p class="eyebrow rv">Para quem move pessoas</p>
+    <h2 class="h2 wide rv">Tecnologia para operar melhor — não para complicar a operação.</h2>
+    <div class="benef rv" style="margin-top:34px">
+      <div class="benef-i"><b>Mais controle</b><p>Informações críticas em um único lugar, no lugar de planilhas paralelas.</p></div>
+      <div class="benef-i"><b>Mais produtividade</b><p>Menos tarefa manual para montar e manter rotas todos os dias.</p></div>
+      <div class="benef-i"><b>Mais precisão</b><p>Horários e pontos organizados de forma consistente entre todas as linhas.</p></div>
+      <div class="benef-i"><b>Mais transparência</b><p>Cliente e passageiro acompanham o que precisam, sem pedir por mensagem.</p></div>
+      <div class="benef-i"><b>Mais segurança operacional</b><p>Cada perfil executa apenas as ações correspondentes à sua função.</p></div>
+      <div class="benef-i"><b>Mais escala</b><p>Cresça sem multiplicar planilhas, grupos e controles paralelos.</p></div>
+    </div>
+    <p class="fecho rv">Você cuida de transportar pessoas.<span>A temvia cuida de conectar toda a operação.</span></p>
+  </div>
+</section>
+
+<!-- =========================== 10. NOSSA HISTÓRIA =========================== -->
+<section class="sec sec-light" id="historia" data-rail="História">
+  <div class="wrap">
+    <p class="eyebrow rv">Nossa história</p>
+    <h2 class="h2 wide rv">A temvia não nasceu numa sala de reunião.</h2>
+    <div class="hist">
+      <div>
+        <p class="lead rv">A plataforma nasceu dentro de uma operação real de fretamento.</p>
+        <p class="p rv">Uma operação com centenas de passageiros era administrada por planilhas, mensagens espalhadas em dezenas de grupos e conhecimento concentrado em poucas pessoas.</p>
+        <p class="p rv">Mudanças de endereço, turno, férias e desligamentos aconteciam diariamente — mas as atualizações nem sempre acompanhavam a mesma velocidade.</p>
+        <p class="p rv">Organizar as planilhas ajudou, mas não resolvia a causa. A operação era dinâmica demais para depender delas.</p>
+        <p class="p rv">Foi daí que nasceu a ideia de conectar toda a cadeia em uma única plataforma: gestão, cliente, motorista e passageiro. Depois vieram a roteirização inteligente, a análise de capacidade, o acompanhamento da viagem e o registro do planejado &times; realizado.</p>
+      </div>
+      <div class="rv">
+        <ul class="hist-list">
+          <li>Motoristas precisavam conhecer os itinerários de memória.</li>
+          <li>Mudanças de horário não chegavam ao passageiro.</li>
+          <li>Rotas extras exigiam reconstruir informações do zero.</li>
+          <li>Quando uma pessoa-chave não estava disponível, parte do conhecimento da operação desaparecia junto.</li>
+        </ul>
+        <p class="big-quote">Feita dentro da operação.<span>Criada para quem vive a operação.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== 11. CTA FINAL + CONTATO =========================== -->
+<section class="sec cta" id="contato">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="cta-in">
+        <h2>Veja a temvia trabalhando com uma operação real.</h2>
+        <p>Em vez de uma apresentação genérica, mostramos a plataforma funcionando com passageiros, linhas, veículos e situações que fazem parte do dia a dia do fretamento.</p>
+        <div class="btns" style="margin-top:22px">
+          <a class="btn btn-lightghost" href="#" data-login>Entrar na plataforma</a>
+        </div>
+        <p class="sig">Se tem viagem, temvia.</p>
+      </div>
+
+      <div class="fcard">
+        <form id="fcontato" novalidate>
+          <h3 class="fcard-h">Contato comercial</h3>
+          <p class="fcard-s">Preencha e retornamos pelo e-mail informado. Já é cliente e precisa de suporte? Fale com a sua transportadora.</p>
+
+          <div class="fld" data-fld>
+            <label for="f-nome">Nome<span class="req">*</span></label>
+            <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+            <span class="msg">Este campo é obrigatório.</span>
+          </div>
+
+          <div class="fld-row">
+            <div class="fld" data-fld>
+              <label for="f-email">E-mail<span class="req">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+              <span class="msg" data-msg="Este campo é obrigatório.">Este campo é obrigatório.</span>
+            </div>
+            <div class="fld" data-fld>
+              <label for="f-tel">Celular<span class="req">*</span></label>
+              <input id="f-tel" name="celular" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" required>
+              <span class="msg">Este campo é obrigatório.</span>
+            </div>
+          </div>
+
+          <div class="fld" data-fld>
+            <label for="f-empresa">Empresa<span class="req">*</span></label>
+            <input id="f-empresa" name="empresa" type="text" autocomplete="organization" required>
+            <span class="msg">Este campo é obrigatório.</span>
+          </div>
+
+          <div class="fld" data-fld>
+            <label for="f-demanda">Qual a sua demanda?<span class="req">*</span></label>
+            <select id="f-demanda" name="demanda" required>
+              <option value="">Selecione...</option>
+              <option>Agendar uma demonstração</option>
+              <option>Conhecer a plataforma</option>
+              <option>Receber uma proposta comercial</option>
+              <option>Transporte escolar</option>
+              <option>Parceria ou revenda</option>
+              <option>Outro assunto</option>
+            </select>
+            <span class="msg">Este campo é obrigatório.</span>
+          </div>
+
+          <div class="fld" data-fld>
+            <label for="f-porte">Tamanho da operação</label>
+            <select id="f-porte" name="porte">
+              <option value="">Selecione...</option>
+              <option>Até 100 passageiros</option>
+              <option>De 100 a 500 passageiros</option>
+              <option>De 500 a 2.000 passageiros</option>
+              <option>Acima de 2.000 passageiros</option>
+              <option>Ainda não sei</option>
+            </select>
+          </div>
+
+          <div class="fld" data-fld>
+            <label for="f-msg">Mensagem ou pergunta</label>
+            <textarea id="f-msg" name="mensagem" placeholder="Conte um pouco sobre a sua operação."></textarea>
+          </div>
+
+          <label class="consent" data-fld>
+            <input id="f-lgpd" name="consentimento" type="checkbox" required>
+            <span>Autorizo a temvia a usar os dados acima para entrar em contato sobre esta solicitação, conforme a <a href="privacidade.html">Política de Privacidade</a>.<span class="req" style="color:var(--err)">*</span></span>
+          </label>
+
+          <div class="hp" aria-hidden="true"><label for="f-site">Não preencha</label><input id="f-site" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+
+          <button class="fsend" type="submit" id="fsend">Enviar</button>
+          <p class="fnote">Respondemos em até um dia útil.</p>
+        </form>
+
+        <div class="fstate" id="fok">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Mensagem enviada.</h3>
+          <p>Recebemos o seu contato e retornamos em até um dia útil pelo e-mail informado.</p>
+        </div>
+
+        <div class="fstate bad" id="ferr">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 16.5v.2"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>Não foi possível enviar agora.</h3>
+          <p>A sua mensagem não se perdeu. Clique abaixo para mandá-la por e-mail, ou escreva para <a href="mailto:contato@temvia.com.br" data-mail>contato@temvia.com.br</a>.</p>
+          <a class="btn btn-amber" id="fmailto" href="#" style="margin-top:16px">Enviar por e-mail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================== FOOTER =========================== -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <img src="assets/logo-temvia-dark.png" alt="temvia" width="337" height="80">
+        <p>Gestão inteligente para transporte fretado.</p>
+        <a class="btn btn-sm btn-amber" href="#" data-login>Entrar</a>
+      </div>
+      <div class="ft-cols">
+        <div>
+          <h4>Produto</h4>
+          <a href="#plataforma">Plataforma</a>
+          <a href="#roteirizacao">Roteirização</a>
+          <a href="#motorista">Motorista</a>
+          <a href="#passageiro">Passageiro</a>
+        </div>
+        <div>
+          <h4>Empresa</h4>
+          <a href="#para-quem-opera">Para quem opera o transporte</a>
+          <a href="#historia">Nossa história</a>
+          <a href="#contato" data-demo>Contato</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="privacidade.html">Privacidade</a>
+          <a href="#contato" data-demo>Fale conosco</a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p>&copy; 2026 temvia. Todos os direitos reservados.</p>
+      <p>Se tem viagem, temvia.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO — os dois únicos endereços editáveis do site
+   ============================================================ */
+// Portal de acesso da plataforma (destino do botão "Entrar")
+const TEMVIA_LOGIN_URL = 'https://app.temvia.com.br/';
+
+// E-mail comercial que recebe as mensagens do formulário
+const TEMVIA_EMAIL = 'contato@temvia.com.br';
+
+// Serviço que entrega o formulário no e-mail acima.
+// Enquanto estiver vazio, o formulário abre o programa de e-mail do visitante
+// já preenchido (funciona sempre, mas depende do visitante clicar em enviar).
+// Para envio direto, cole aqui o endpoint do FormSubmit ou do Formspree. Ex.:
+//   'https://formsubmit.co/ajax/contato@temvia.com.br'
+//   'https://formspree.io/f/XXXXXXXX'
+const TEMVIA_FORM_ENDPOINT = 'https://formsubmit.co/ajax/contato@temvia.com.br';
+
+(function(){
+  'use strict';
+
+  /* --- aplica os endereços em todos os botões --- */
+  document.querySelectorAll('[data-login]').forEach(function(a){
+    a.href = TEMVIA_LOGIN_URL;
+    a.rel  = 'noopener';
+  });
+  document.querySelectorAll('[data-demo]').forEach(function(a){
+    a.href = '#contato';
+  });
+  document.querySelectorAll('[data-mail]').forEach(function(a){
+    a.href = 'mailto:' + TEMVIA_EMAIL;
+    a.textContent = TEMVIA_EMAIL;
+  });
+
+  /* --- header com borda ao rolar --- */
+  var hdr = document.getElementById('hdr');
+  var onScroll = function(){
+    hdr.classList.toggle('stuck', window.scrollY > 8);
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* --- menu mobile --- */
+  var burger = document.getElementById('burger');
+  var mnav   = document.getElementById('mnav');
+  burger.addEventListener('click', function(){
+    var open = mnav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  });
+  mnav.addEventListener('click', function(e){
+    if (e.target.closest('a')) {
+      mnav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* --- trilho de paradas (marcador de progresso) --- */
+  var secs = Array.prototype.slice.call(document.querySelectorAll('[data-rail]'));
+  var rail = document.getElementById('rail');
+  secs.forEach(function(s, i){
+    var it = document.createElement('a');
+    it.className = 'rail-item';
+    it.href = '#' + (s.id || 'topo');
+    it.tabIndex = -1;
+    it.innerHTML = '<i class="rail-dot"></i><span class="rail-label">' + s.dataset.rail + '</span>';
+    rail.appendChild(it);
+    s._railItem = it;
+  });
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- revelação suave --- */
+  if ('IntersectionObserver' in window && !reduce) {
+    var rvObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); rvObs.unobserve(en.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    document.querySelectorAll('.rv').forEach(function(el, i){
+      el.style.transitionDelay = Math.min(i % 5, 4) * 55 + 'ms';
+      rvObs.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* --- estado do trilho conforme a rolagem --- */
+  var markRail = function(){
+    var mid = window.scrollY + window.innerHeight * 0.38;
+    var active = null;
+    secs.forEach(function(s){
+      if (s.offsetTop <= mid) active = s;
+    });
+    var passed = true;
+    secs.forEach(function(s){
+      var it = s._railItem;
+      it.classList.remove('on','done');
+      if (s === active) { it.classList.add('on'); passed = false; }
+      else if (passed)  { it.classList.add('done'); }
+    });
+  };
+  var ctaEl = document.getElementById('contato');
+  var hideRail = function(){
+    if (!ctaEl) return;
+    var top = ctaEl.getBoundingClientRect().top;
+    rail.classList.toggle('hide', top < window.innerHeight * 0.55);
+  };
+  window.addEventListener('scroll', hideRail, {passive:true});
+  hideRail();
+
+  window.addEventListener('scroll', markRail, {passive:true});
+  window.addEventListener('resize', markRail);
+  markRail();
+
+  /* ============================================================
+     FORMULÁRIO DE CONTATO COMERCIAL
+     ============================================================ */
+  var form = document.getElementById('fcontato');
+  if (!form) return;
+
+  var btn    = document.getElementById('fsend');
+  var okBox  = document.getElementById('fok');
+  var errBox = document.getElementById('ferr');
+
+  var emailOk = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); };
+  var telOk   = function(v){ return (v.replace(/\D/g,'').length >= 10); };
+
+  var box = function(el){ return el.closest('[data-fld]'); };
+  var fail = function(el, texto){
+    var b = box(el);
+    b.classList.add('err');
+    var m = b.querySelector('.msg');
+    if (m && texto) m.textContent = texto;
+  };
+  var clear = function(el){ box(el).classList.remove('err'); };
+
+  /* máscara simples de celular brasileiro */
+  var tel = document.getElementById('f-tel');
+  tel.addEventListener('input', function(){
+    var d = tel.value.replace(/\D/g,'').slice(0,11);
+    var out = d;
+    if (d.length > 2)  out = '(' + d.slice(0,2) + ') ' + d.slice(2);
+    if (d.length > 7)  out = '(' + d.slice(0,2) + ') ' + d.slice(2, d.length > 10 ? 7 : 6) + '-' + d.slice(d.length > 10 ? 7 : 6);
+    tel.value = out;
+  });
+
+  /* limpa o erro assim que a pessoa corrige */
+  form.addEventListener('input', function(e){
+    var b = e.target.closest('[data-fld]');
+    if (b) b.classList.remove('err');
+  });
+  form.addEventListener('change', function(e){
+    var b = e.target.closest('[data-fld]');
+    if (b) b.classList.remove('err');
+  });
+
+  var validar = function(){
+    var campos = ['f-nome','f-email','f-tel','f-empresa','f-demanda','f-lgpd'];
+    var primeiro = null;
+    campos.forEach(function(id){
+      var el = document.getElementById(id);
+      clear(el);
+      var vazio = (el.type === 'checkbox') ? !el.checked : !el.value.trim();
+      if (vazio) {
+        fail(el, el.type === 'checkbox' ? '' : 'Este campo é obrigatório.');
+        if (!primeiro) primeiro = el;
+      } else if (id === 'f-email' && !emailOk(el.value.trim())) {
+        fail(el, 'Informe um e-mail válido.');
+        if (!primeiro) primeiro = el;
+      } else if (id === 'f-tel' && !telOk(el.value)) {
+        fail(el, 'Informe um celular com DDD.');
+        if (!primeiro) primeiro = el;
+      }
+    });
+    if (primeiro) {
+      primeiro.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'});
+      if (primeiro.type !== 'checkbox') primeiro.focus({preventScroll:true});
+    }
+    return !primeiro;
+  };
+
+  var corpoTexto = function(d){
+    return 'Nome: ' + d.nome +
+      '\nE-mail: ' + d.email +
+      '\nCelular: ' + d.celular +
+      '\nEmpresa: ' + d.empresa +
+      '\nDemanda: ' + d.demanda +
+      '\nTamanho da operação: ' + (d.porte || 'não informado') +
+      '\n\nMensagem:\n' + (d.mensagem || '(sem mensagem)') +
+      '\n\n— enviado pelo site temvia.com.br';
+  };
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (document.getElementById('f-site').value) return;  /* isca de robô */
+    if (!validar()) return;
+
+    var d = {
+      nome:     document.getElementById('f-nome').value.trim(),
+      email:    document.getElementById('f-email').value.trim(),
+      celular:  document.getElementById('f-tel').value.trim(),
+      empresa:  document.getElementById('f-empresa').value.trim(),
+      demanda:  document.getElementById('f-demanda').value,
+      porte:    document.getElementById('f-porte').value,
+      mensagem: document.getElementById('f-msg').value.trim()
+    };
+
+    /* sem endpoint configurado: abre o programa de e-mail já preenchido */
+    if (!TEMVIA_FORM_ENDPOINT) {
+      window.location.href = 'mailto:' + TEMVIA_EMAIL +
+        '?subject=' + encodeURIComponent('Contato comercial — ' + d.empresa + ' — ' + d.demanda) +
+        '&body=' + encodeURIComponent(corpoTexto(d));
+      form.style.display = 'none';
+      okBox.classList.add('on');
+      okBox.querySelector('p').textContent = 'Seu programa de e-mail foi aberto com a mensagem pronta. Confira e clique em enviar.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    fetch(TEMVIA_FORM_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+      body: JSON.stringify({
+        _subject: 'Contato comercial — ' + d.empresa + ' — ' + d.demanda,
+        _template: 'table',
+        nome: d.nome, email: d.email, celular: d.celular, empresa: d.empresa,
+        demanda: d.demanda, tamanho_operacao: d.porte, mensagem: d.mensagem,
+        origem: 'temvia.com.br'
+      })
+    })
+    .then(function(r){ if (!r.ok) throw new Error('falha ' + r.status); return r; })
+    .then(function(){
+      form.style.display = 'none';
+      errBox.classList.remove('on');
+      okBox.classList.add('on');
+    })
+    .catch(function(){
+      var alt = document.getElementById('fmailto');
+      if (alt) {
+        alt.href = 'mailto:' + TEMVIA_EMAIL +
+          '?subject=' + encodeURIComponent('Contato comercial — ' + d.empresa + ' — ' + d.demanda) +
+          '&body=' + encodeURIComponent(corpoTexto(d));
+      }
+      form.style.display = 'none';
+      errBox.classList.add('on');
+    });
+  });
+})();
+</script>
+</body>
+</html>
