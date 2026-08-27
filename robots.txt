@@ -1,4 +1,5 @@
-User-agent: *
-Allow: /
+# app.temvia.com.br — ambiente de aplicação, não é conteúdo público.
+# O site institucional é https://temvia.com.br
 
-Sitemap: https://temvia.com.br/sitemap.xml
+User-agent: *
+Disallow: /
